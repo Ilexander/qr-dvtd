@@ -1,0 +1,22 @@
+{
+  "name": "my-turborepo",
+  "private": true,
+  "packageManager": "pnpm@10.0.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "check-types": "turbo run check-types"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^8.2.0",
+    "eslint": "^10.2.0",
+    "prettier": "^3.7.4",
+    "turbo": "^2.9.6",
+    "typescript": "catalog:"
+  }
+}

@@ -1,0 +1,13 @@
+shellEmulator: true
+
+trustPolicy: no-downgrade
+
+packages:
+  - 'apps/*'
+  - 'packages/*'
+
+catalog:
+  '@orpc/client': ^1.13.14
+  '@orpc/server': ^1.13.14
+  typescript: ~6.0.0
+  zod: ^3.23.0
