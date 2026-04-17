@@ -144,7 +144,6 @@
 .gradient-border {
   position: relative;
   border-radius: 12px;
-  background: #111;
 }
 
 .gradient-border::before {

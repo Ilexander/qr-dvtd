@@ -1,33 +1,40 @@
-import { createServer } from 'node:http'
 import { onError } from '@orpc/server'
 import { RPCHandler } from '@orpc/server/node'
-import { CORSPlugin } from '@orpc/server/plugins'
+import cors from 'cors'
+import express from 'express'
+import pino from 'pino-http'
 import { routers } from './router'
 
 const PORT = 3000
 
+const pinoLogger = pino()
+
+const app = express()
+
+app.use(cors())
+app.use(pinoLogger)
+
 const handler = new RPCHandler(routers, {
-  plugins: [new CORSPlugin()],
   interceptors: [
-    onError((error: Error) => {
+    onError((error) => {
       console.error(error)
     }),
   ],
 })
 
-const server = createServer(async (req, res) => {
-  const result = await handler.handle(req, res, {
-    context: { headers: req.headers },
+app.use('/rpc{/*path}', async (req, res, next) => {
+  const { matched } = await handler.handle(req, res, {
+    prefix: '/rpc',
+    context: {},
   })
 
-  if (!result.matched) {
-    res.statusCode = 404
-    res.end('No procedure matched')
+  if (matched) {
+    return
   }
+
+  next()
 })
 
-server.listen(
-  PORT,
-  '127.0.0.1',
-  () => console.log(`🚀 Listening on 127.0.0.1:${PORT}`),
-)
+app.listen(PORT, () => pinoLogger.logger.info(`🚀 Server listening on port ${PORT}`))
+
+export type AppRouter = typeof routers

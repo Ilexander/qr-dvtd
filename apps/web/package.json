@@ -15,8 +15,11 @@
   },
   "dependencies": {
     "@orpc/client": "catalog:",
+    "@orpc/server": "catalog:",
+    "@orpc/tanstack-query": "^1.13.14",
     "@tailwindcss/vite": "^4.2.2",
     "@tanstack/vue-query": "^5.99.0",
+    "@vueuse/core": "^14.2.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-vue-next": "^1.0.0",
