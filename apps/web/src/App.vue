@@ -2,6 +2,7 @@
 import { useMutation } from '@tanstack/vue-query'
 import { Sparkle } from 'lucide-vue-next'
 import { motion } from 'motion-v'
+import { onBeforeMount } from 'vue'
 import { Button } from '@/components/ui/button'
 import { orpc } from './orpc'
 import { bottomAnimation, topAnimation } from './utils'
@@ -10,9 +11,18 @@ function onButtonClick(link: string) {
   window.open(link)
 }
 
-const { mutate } = useMutation(orpc.auth.mutationOptions())
+const { mutateAsync } = useMutation(orpc.auth.mutationOptions())
 
-mutate({ password: '123' })
+onBeforeMount(async () => {
+  const cookieUuid = await cookieStore.get('uuid')
+
+  if (!cookieUuid) {
+    const uuid = crypto.randomUUID()
+    await mutateAsync({ uuid }).then(() => {
+      cookieStore.set('uuid', uuid)
+    })
+  }
+})
 </script>
 
 <template>

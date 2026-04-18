@@ -1,5 +1,6 @@
 import { onError } from '@orpc/server'
 import { RPCHandler } from '@orpc/server/node'
+import { RequestHeadersPlugin } from '@orpc/server/plugins'
 import cors from 'cors'
 import express from 'express'
 import pino from 'pino-http'
@@ -7,7 +8,7 @@ import { routers } from './router'
 
 const PORT = 3000
 
-const pinoLogger = pino()
+export const pinoLogger = pino()
 
 const app = express()
 
@@ -15,6 +16,9 @@ app.use(cors())
 app.use(pinoLogger)
 
 const handler = new RPCHandler(routers, {
+  plugins: [
+    new RequestHeadersPlugin(),
+  ],
   interceptors: [
     onError((error) => {
       console.error(error)
