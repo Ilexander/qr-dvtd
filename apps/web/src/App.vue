@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { Button } from '@qr/ui/src/components/button'
 import { useMutation } from '@tanstack/vue-query'
+import Cookie from 'js-cookie'
 import { Sparkle } from 'lucide-vue-next'
 import { motion } from 'motion-v'
+import { v4 as uuidv4 } from 'uuid'
 import { onBeforeMount } from 'vue'
-import { Button } from '@/components/ui/button'
 import { orpc } from './orpc'
 import { bottomAnimation, topAnimation } from './utils'
 
@@ -14,12 +16,12 @@ function onButtonClick(link: string) {
 const { mutateAsync } = useMutation(orpc.auth.mutationOptions())
 
 onBeforeMount(async () => {
-  const cookieUuid = await cookieStore.get('uuid')
+  const cookieUuid = Cookie.get('uuid')
 
   if (!cookieUuid) {
-    const uuid = crypto.randomUUID()
+    const uuid = uuidv4()
     await mutateAsync({ uuid }).then(() => {
-      cookieStore.set('uuid', uuid)
+      Cookie.set('uuid', uuid)
     })
   }
 })

@@ -9,5 +9,7 @@ packages:
 catalog:
   '@orpc/client': ^1.13.14
   '@orpc/server': ^1.13.14
+  tailwindcss: ^4.2.2
   typescript: ~6.0.0
+  vue: ^3.5.31
   zod: ^3.23.0

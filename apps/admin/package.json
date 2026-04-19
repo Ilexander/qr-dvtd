@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "admin",
   "type": "module",
   "version": "0.0.0",
   "private": true,
@@ -7,7 +7,7 @@
     "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "lint": "eslint",
@@ -20,22 +20,20 @@
     "@qr/ui": "workspace:*",
     "@tailwindcss/vite": "^4.2.2",
     "@tanstack/vue-query": "^5.99.0",
+    "@unovis/vue": "^1.6.4",
     "@vueuse/core": "^14.2.1",
     "class-variance-authority": "^0.7.1",
-    "js-cookie": "^3.0.5",
+    "clsx": "^2.1.1",
     "lucide-vue-next": "^1.0.0",
     "motion-v": "^2.2.1",
-    "reka-ui": "^2.9.6",
-    "tailwindcss": "catalog:",
-    "uuid": "^13.0.0",
-    "vue": "^3.5.31",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^4.2.2",
+    "vue": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@tsconfig/node24": "^24.0.4",
-    "@types/js-cookie": "^3.0.6",
     "@types/node": "^24.12.0",
-    "@types/uuid": "^11.0.0",
     "@vitejs/plugin-vue": "^6.0.5",
     "@vue/tsconfig": "^0.9.1",
     "npm-run-all2": "^8.0.4",
