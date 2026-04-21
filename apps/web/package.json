@@ -12,6 +12,7 @@
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "lint": "eslint",
+    "start": "vite --port 80",
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
