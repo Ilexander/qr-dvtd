@@ -1,6 +1,7 @@
 import { VueQueryPlugin } from '@tanstack/vue-query'
 import { createApp } from 'vue'
 import App from './App.vue'
+import 'vue-sonner/style.css'
 
 import '@qr/ui/src/style.css'
 

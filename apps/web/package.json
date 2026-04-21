@@ -29,6 +29,7 @@
     "tailwindcss": "catalog:",
     "uuid": "^13.0.0",
     "vue": "^3.5.31",
+    "vue-sonner": "^2.0.9",
     "zod": "catalog:"
   },
   "devDependencies": {

@@ -24,6 +24,11 @@ export const auth = os
         throw new ORPCError('BAD_REQUEST', { message: 'User registred' })
       }
 
+      console.log({
+        userAgent,
+        uuid: input.uuid,
+      })
+
       await tx.insert(metricsTable).values({
         userAgent,
         uuid: input.uuid,

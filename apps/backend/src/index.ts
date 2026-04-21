@@ -12,7 +12,9 @@ export const pinoLogger = pino()
 
 const app = express()
 
-app.use(cors())
+app.use(cors({
+  origin: ['http://192.168.100.50:5173', 'http://localhost:5173', 'http://localhost:5174'],
+}))
 app.use(pinoLogger)
 
 const handler = new RPCHandler(routers, {
@@ -39,6 +41,6 @@ app.use('/rpc{/*path}', async (req, res, next) => {
   next()
 })
 
-app.listen(PORT, () => pinoLogger.logger.info(`🚀 Server listening on port ${PORT}`))
+app.listen(PORT, '0.0.0.0', () => pinoLogger.logger.info(`🚀 Server listening on port ${PORT}`))
 
 export type AppRouter = typeof routers
