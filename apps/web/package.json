@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "vite --host",
+    "build-only": "vite build",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "lint": "eslint",
