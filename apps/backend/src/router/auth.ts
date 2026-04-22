@@ -21,17 +21,12 @@ export const auth = os
       })
 
       if (existedMetric) {
-        throw new ORPCError('BAD_REQUEST', { message: 'User registred' })
+        throw new ORPCError('BAD_REQUEST', { message: 'User registered' })
       }
 
-      console.log({
+      return tx.insert(metricsTable).values({
         userAgent,
         uuid: input.uuid,
-      })
-
-      await tx.insert(metricsTable).values({
-        userAgent,
-        uuid: input.uuid,
-      })
+      }).returning()
     })
   })
