@@ -6,7 +6,6 @@ import { createTanstackQueryUtils } from '@orpc/tanstack-query'
 
 const link = new RPCLink({
   url: `${import.meta.env.PROD ? import.meta.env.VITE_SERVER_API : 'http://localhost:3000'}/rpc`,
-  headers: { Authorization: 'Bearer token' },
 })
 
 const client: RouterClient<AppRouter> = createORPCClient(link)

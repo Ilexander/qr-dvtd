@@ -4,7 +4,6 @@ import { RequestHeadersPlugin } from '@orpc/server/plugins'
 import cors from 'cors'
 import express from 'express'
 import pino from 'pino-http'
-import { env } from './config/env'
 import { routers } from './router'
 
 const PORT = 3000
@@ -13,11 +12,7 @@ export const pinoLogger = pino()
 
 const app = express()
 
-app.use(cors({
-  origin: env.ENV === 'production'
-    ? [env.ADMIN_URL, env.CLIENT_URL]
-    : ['http://192.168.100.50:5173', 'http://localhost:5173', 'http://localhost:5174'],
-}))
+app.use(cors())
 app.use(pinoLogger)
 
 const handler = new RPCHandler(routers, {

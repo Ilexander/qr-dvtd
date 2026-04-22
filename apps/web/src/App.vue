@@ -25,9 +25,13 @@ onBeforeMount(async () => {
 
   if (!cookieUuid) {
     const uuid = uuidv4()
-    await mutateAsync({ uuid }).then(() => {
+    try {
+      await mutateAsync({ uuid })
       Cookie.set('uuid', uuid)
-    })
+    }
+    catch (err) {
+      console.error(err)
+    }
   }
 })
 </script>
