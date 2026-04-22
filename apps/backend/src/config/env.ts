@@ -7,6 +7,7 @@ const envSchema = z.object({
   CLIENT_URL: z.string(),
   ADMIN_URL: z.string(),
   ENV: z.enum(['production', 'dev']),
+  PORT: z.string(),
 })
 
 export const env = envSchema.parse(process.env)

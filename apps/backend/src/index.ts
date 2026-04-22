@@ -4,9 +4,10 @@ import { RequestHeadersPlugin } from '@orpc/server/plugins'
 import cors from 'cors'
 import express from 'express'
 import pino from 'pino-http'
+import { env } from './config/env'
 import { routers } from './router'
 
-const PORT = 3000
+const PORT = env.PORT
 
 export const pinoLogger = pino()
 
